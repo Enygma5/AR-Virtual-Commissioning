@@ -1,0 +1,13 @@
+# Unity generated folders
+/Augmented_Reality_Unity/AR_Tracker/[Ll]ibrary/
+/Augmented_Reality_Unity/AR_Tracker/[Tt]emp/
+/Augmented_Reality_Unity/AR_Tracker/[Oo]bj/
+/Augmented_Reality_Unity/AR_Tracker/[Ll]ogs/
+/Augmented_Reality_Unity/AR_Tracker/[Uu]ser[Ss]ettings/
+/Augmented_Reality_Unity/AR_Tracker/[Bb]uild/
+/Augmented_Reality_Unity/AR_Tracker/[Bb]uilds/
+
+# IDE files
+/Augmented_Reality_Unity/AR_Tracker/.vs/
+/Augmented_Reality_Unity/AR_Tracker/.vscode/
+/Server_Logic_Java/ServerJava/.idea/
