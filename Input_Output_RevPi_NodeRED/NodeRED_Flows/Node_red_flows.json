@@ -1,1 +1,1193 @@
-[{"id":"8127fa49.f85188","type":"tab","label":"Rev-Pi","disabled":false,"info":""},{"id":"881e060a.9b5288","type":"revpi-server","z":"","host":"localhost","port":"8000","user":"","password":"","rejectUnauthorized":false,"ca":""},{"id":"cab5bc65.6fe8a","type":"websocket-client","z":"","path":"ws://192.168.250.204:8080/real1","tls":"","wholemsg":"false"},{"id":"1a68a9e6.b8ba46","type":"websocket-client","z":"","path":"ws://192.168.250.204:8080/real2","tls":"","wholemsg":"false"},{"id":"8f2153ad.6e7ac","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_1","overwritevalue":false,"outputvalue":"","x":880,"y":20,"wires":[]},{"id":"eae23b01.218ee8","type":"revpi-single-input","z":"8127fa49.f85188","server":"881e060a.9b5288","inputpin":"I_1","topic":"","x":150,"y":380,"wires":[["a5e66a51.64b028"]]},{"id":"3e259c00.953d24","type":"revpi-single-input","z":"8127fa49.f85188","server":"881e060a.9b5288","inputpin":"I_2","topic":"","x":150,"y":500,"wires":[["a6dee41d.5db738"]]},{"id":"f7ddcfc9.40fef","type":"websocket out","z":"8127fa49.f85188","name":"","server":"","client":"cab5bc65.6fe8a","x":850,"y":460,"wires":[]},{"id":"66e984e4.ec71fc","type":"change","z":"8127fa49.f85188","name":"left_sensor_on","rules":[{"t":"set","p":"payload","pt":"msg","to":"left_sensor_on","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":540,"y":360,"wires":[["f7ddcfc9.40fef","824bfeb7.c30dc"]]},{"id":"4d5a4195.7f0c8","type":"change","z":"8127fa49.f85188","name":"right_sensor_on","rules":[{"t":"set","p":"payload","pt":"msg","to":"right_sensor_on","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":540,"y":480,"wires":[["f7ddcfc9.40fef","824bfeb7.c30dc"]]},{"id":"bb5b5d9d.70451","type":"websocket in","z":"8127fa49.f85188","name":"","server":"","client":"cab5bc65.6fe8a","x":170,"y":220,"wires":[["e82585e3.a12e38","57c30ff9.6e5d3"]]},{"id":"e82585e3.a12e38","type":"switch","z":"8127fa49.f85188","name":"check_r1_msg","property":"payload","propertyType":"msg","rules":[{"t":"eq","v":"move_right","vt":"str"},{"t":"eq","v":"move_left","vt":"str"},{"t":"eq","v":"stop","vt":"str"}],"checkall":"true","repair":false,"outputs":3,"x":440,"y":220,"wires":[["3fe6f65b.234a4a","bdaea717.0dff98"],["40326759.a76868","60acad0.f8cb554"],["fc1d047d.d5e868","eace37c8.49f6b8"]]},{"id":"57c30ff9.6e5d3","type":"debug","z":"8127fa49.f85188","name":"real1_msg","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","targetType":"msg","x":390,"y":60,"wires":[]},{"id":"46d37cfa.4c31a4","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_2","overwritevalue":false,"outputvalue":"","x":880,"y":80,"wires":[]},{"id":"824bfeb7.c30dc","type":"debug","z":"8127fa49.f85188","name":"real1","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","targetType":"msg","x":830,"y":540,"wires":[]},{"id":"a5e66a51.64b028","type":"switch","z":"8127fa49.f85188","name":"","property":"payload","propertyType":"msg","rules":[{"t":"eq","v":"0","vt":"num"},{"t":"eq","v":"1","vt":"str"}],"checkall":"true","repair":false,"outputs":2,"x":330,"y":380,"wires":[["66e984e4.ec71fc"],["a614098b.364738"]]},{"id":"a6dee41d.5db738","type":"switch","z":"8127fa49.f85188","name":"","property":"payload","propertyType":"msg","rules":[{"t":"eq","v":"0","vt":"num"},{"t":"eq","v":"1","vt":"str"}],"checkall":"true","repair":false,"outputs":2,"x":330,"y":500,"wires":[["4d5a4195.7f0c8"],["3bb51391.1b814c"]]},{"id":"bdaea717.0dff98","type":"change","z":"8127fa49.f85188","name":"set_to_0","rules":[{"t":"set","p":"payload","pt":"msg","to":"0","tot":"num"}],"action":"","property":"","from":"","to":"","reg":false,"x":660,"y":80,"wires":[["46d37cfa.4c31a4"]]},{"id":"3fe6f65b.234a4a","type":"change","z":"8127fa49.f85188","name":"set_to_1","rules":[{"t":"set","p":"payload","pt":"msg","to":"1","tot":"num"}],"action":"","property":"","from":"","to":"","reg":false,"x":660,"y":40,"wires":[["8f2153ad.6e7ac"]]},{"id":"8bbe87c5.845998","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_1","overwritevalue":false,"outputvalue":"","x":880,"y":140,"wires":[]},{"id":"ea4b16d9.0d1a48","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_2","overwritevalue":false,"outputvalue":"","x":880,"y":200,"wires":[]},{"id":"60acad0.f8cb554","type":"change","z":"8127fa49.f85188","name":"set_to_1","rules":[{"t":"set","p":"payload","pt":"msg","to":"1","tot":"num"}],"action":"","property":"","from":"","to":"","reg":false,"x":660,"y":200,"wires":[["ea4b16d9.0d1a48"]]},{"id":"40326759.a76868","type":"change","z":"8127fa49.f85188","name":"set_to_0","rules":[{"t":"set","p":"payload","pt":"msg","to":"0","tot":"num"}],"action":"","property":"","from":"","to":"","reg":false,"x":660,"y":160,"wires":[["8bbe87c5.845998"]]},{"id":"26ee029a.9cb61e","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_1","overwritevalue":false,"outputvalue":"","x":880,"y":260,"wires":[]},{"id":"283a504a.ab728","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_2","overwritevalue":false,"outputvalue":"","x":880,"y":320,"wires":[]},{"id":"eace37c8.49f6b8","type":"change","z":"8127fa49.f85188","name":"set_to_0","rules":[{"t":"set","p":"payload","pt":"msg","to":"0","tot":"num"}],"action":"","property":"","from":"","to":"","reg":false,"x":660,"y":320,"wires":[["283a504a.ab728"]]},{"id":"fc1d047d.d5e868","type":"change","z":"8127fa49.f85188","name":"set_to_0","rules":[{"t":"set","p":"payload","pt":"msg","to":"0","tot":"num"}],"action":"","property":"","from":"","to":"","reg":false,"x":660,"y":280,"wires":[["26ee029a.9cb61e"]]},{"id":"49516207.4eaffc","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_1","overwritevalue":true,"outputvalue":"0","x":1080,"y":560,"wires":[]},{"id":"f7e3740c.d97338","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_2","overwritevalue":true,"outputvalue":"0","x":1080,"y":640,"wires":[]},{"id":"2fb7cfc6.929b6","type":"inject","z":"8127fa49.f85188","name":"stop_manually","topic":"","payload":"","payloadType":"date","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":890,"y":600,"wires":[["49516207.4eaffc","f7e3740c.d97338","e3dea5a3.3e5e58","f7ef8c15.fce7b"]]},{"id":"a614098b.364738","type":"change","z":"8127fa49.f85188","name":"left_sensor_off","rules":[{"t":"set","p":"payload","pt":"msg","to":"left_sensor_off","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":540,"y":420,"wires":[["f7ddcfc9.40fef","824bfeb7.c30dc"]]},{"id":"3bb51391.1b814c","type":"change","z":"8127fa49.f85188","name":"right_sensor_off","rules":[{"t":"set","p":"payload","pt":"msg","to":"right_sensor_off","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":540,"y":540,"wires":[["f7ddcfc9.40fef","824bfeb7.c30dc"]]},{"id":"e0aa0703.51e178","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_3","overwritevalue":false,"outputvalue":"","x":880,"y":720,"wires":[]},{"id":"5ea05e6e.e470c","type":"revpi-single-input","z":"8127fa49.f85188","server":"881e060a.9b5288","inputpin":"I_3","topic":"","x":150,"y":1080,"wires":[["69e05075.dca67"]]},{"id":"37f31f14.ba3fb","type":"revpi-single-input","z":"8127fa49.f85188","server":"881e060a.9b5288","inputpin":"I_4","topic":"","x":150,"y":1200,"wires":[["d7c29d98.5699e"]]},{"id":"b6cbf1bf.7a3cd","type":"websocket out","z":"8127fa49.f85188","name":"","server":"","client":"1a68a9e6.b8ba46","x":850,"y":1160,"wires":[]},{"id":"b5f68a69.e65258","type":"change","z":"8127fa49.f85188","name":"left_sensor_on","rules":[{"t":"set","p":"payload","pt":"msg","to":"left_sensor_on","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":540,"y":1060,"wires":[["b6cbf1bf.7a3cd","7235ee60.88ed6"]]},{"id":"33961262.2339ee","type":"change","z":"8127fa49.f85188","name":"right_sensor_on","rules":[{"t":"set","p":"payload","pt":"msg","to":"right_sensor_on","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":540,"y":1180,"wires":[["b6cbf1bf.7a3cd","7235ee60.88ed6"]]},{"id":"8a44d818.bdc178","type":"websocket in","z":"8127fa49.f85188","name":"","server":"","client":"1a68a9e6.b8ba46","x":170,"y":920,"wires":[["adbb8a29.247da8","26d39603.32dc2a"]]},{"id":"adbb8a29.247da8","type":"switch","z":"8127fa49.f85188","name":"check_r2_msg","property":"payload","propertyType":"msg","rules":[{"t":"eq","v":"move_right","vt":"str"},{"t":"eq","v":"move_left","vt":"str"},{"t":"eq","v":"stop","vt":"str"}],"checkall":"true","repair":false,"outputs":3,"x":440,"y":920,"wires":[["4afce46b.ccb3ac","a8b59e2d.85642"],["8eec1078.cf6be","3eb645f8.a5882a"],["7bdec740.d1e9d8","e7659bd9.263aa8"]]},{"id":"26d39603.32dc2a","type":"debug","z":"8127fa49.f85188","name":"real2_msg","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","targetType":"msg","x":390,"y":760,"wires":[]},{"id":"7cbe85f0.30fa6c","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_4","overwritevalue":false,"outputvalue":"","x":880,"y":780,"wires":[]},{"id":"7235ee60.88ed6","type":"debug","z":"8127fa49.f85188","name":"real2","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","targetType":"msg","x":830,"y":1240,"wires":[]},{"id":"69e05075.dca67","type":"switch","z":"8127fa49.f85188","name":"","property":"payload","propertyType":"msg","rules":[{"t":"eq","v":"0","vt":"num"},{"t":"eq","v":"1","vt":"str"}],"checkall":"true","repair":false,"outputs":2,"x":330,"y":1080,"wires":[["b5f68a69.e65258"],["a7f3fbf7.749148"]]},{"id":"d7c29d98.5699e","type":"switch","z":"8127fa49.f85188","name":"","property":"payload","propertyType":"msg","rules":[{"t":"eq","v":"0","vt":"num"},{"t":"eq","v":"1","vt":"str"}],"checkall":"true","repair":false,"outputs":2,"x":330,"y":1200,"wires":[["33961262.2339ee"],["883a59fe.e39198"]]},{"id":"a8b59e2d.85642","type":"change","z":"8127fa49.f85188","name":"set_to_0","rules":[{"t":"set","p":"payload","pt":"msg","to":"0","tot":"num"}],"action":"","property":"","from":"","to":"","reg":false,"x":660,"y":780,"wires":[["7cbe85f0.30fa6c"]]},{"id":"4afce46b.ccb3ac","type":"change","z":"8127fa49.f85188","name":"set_to_1","rules":[{"t":"set","p":"payload","pt":"msg","to":"1","tot":"num"}],"action":"","property":"","from":"","to":"","reg":false,"x":660,"y":740,"wires":[["e0aa0703.51e178"]]},{"id":"49311f57.a6f72","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_3","overwritevalue":false,"outputvalue":"","x":880,"y":840,"wires":[]},{"id":"8c75271f.e54678","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_4","overwritevalue":false,"outputvalue":"","x":880,"y":900,"wires":[]},{"id":"3eb645f8.a5882a","type":"change","z":"8127fa49.f85188","name":"set_to_1","rules":[{"t":"set","p":"payload","pt":"msg","to":"1","tot":"num"}],"action":"","property":"","from":"","to":"","reg":false,"x":660,"y":900,"wires":[["8c75271f.e54678"]]},{"id":"8eec1078.cf6be","type":"change","z":"8127fa49.f85188","name":"set_to_0","rules":[{"t":"set","p":"payload","pt":"msg","to":"0","tot":"num"}],"action":"","property":"","from":"","to":"","reg":false,"x":660,"y":860,"wires":[["49311f57.a6f72"]]},{"id":"377e9b0f.11ae74","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_3","overwritevalue":false,"outputvalue":"","x":880,"y":960,"wires":[]},{"id":"3c9dd50a.e1679a","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_4","overwritevalue":false,"outputvalue":"","x":880,"y":1020,"wires":[]},{"id":"e7659bd9.263aa8","type":"change","z":"8127fa49.f85188","name":"set_to_0","rules":[{"t":"set","p":"payload","pt":"msg","to":"0","tot":"num"}],"action":"","property":"","from":"","to":"","reg":false,"x":660,"y":1020,"wires":[["3c9dd50a.e1679a"]]},{"id":"7bdec740.d1e9d8","type":"change","z":"8127fa49.f85188","name":"set_to_0","rules":[{"t":"set","p":"payload","pt":"msg","to":"0","tot":"num"}],"action":"","property":"","from":"","to":"","reg":false,"x":660,"y":980,"wires":[["377e9b0f.11ae74"]]},{"id":"a7f3fbf7.749148","type":"change","z":"8127fa49.f85188","name":"left_sensor_off","rules":[{"t":"set","p":"payload","pt":"msg","to":"left_sensor_off","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":540,"y":1120,"wires":[["b6cbf1bf.7a3cd","7235ee60.88ed6"]]},{"id":"883a59fe.e39198","type":"change","z":"8127fa49.f85188","name":"right_sensor_off","rules":[{"t":"set","p":"payload","pt":"msg","to":"right_sensor_off","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":540,"y":1240,"wires":[["b6cbf1bf.7a3cd","7235ee60.88ed6"]]},{"id":"f7ef8c15.fce7b","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_4","overwritevalue":true,"outputvalue":"0","x":1080,"y":800,"wires":[]},{"id":"e3dea5a3.3e5e58","type":"revpi-output","z":"8127fa49.f85188","server":"881e060a.9b5288","outputpin":"O_3","overwritevalue":true,"outputvalue":"0","x":1080,"y":720,"wires":[]}]
+[
+  {
+    "id": "8127fa49.f85188",
+    "type": "tab",
+    "label": "Rev-Pi",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "881e060a.9b5288",
+    "type": "revpi-server",
+    "z": "",
+    "host": "localhost",
+    "port": "8000",
+    "user": "",
+    "password": "",
+    "rejectUnauthorized": false,
+    "ca": ""
+  },
+  {
+    "id": "cab5bc65.6fe8a",
+    "type": "websocket-client",
+    "z": "",
+    "path": "ws://192.168.250.204:8080/real1",
+    "tls": "",
+    "wholemsg": "false"
+  },
+  {
+    "id": "1a68a9e6.b8ba46",
+    "type": "websocket-client",
+    "z": "",
+    "path": "ws://192.168.250.204:8080/real2",
+    "tls": "",
+    "wholemsg": "false"
+  },
+  {
+    "id": "8f2153ad.6e7ac",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_1",
+    "overwritevalue": false,
+    "outputvalue": "",
+    "x": 880,
+    "y": 20,
+    "wires": []
+  },
+  {
+    "id": "eae23b01.218ee8",
+    "type": "revpi-single-input",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "inputpin": "I_1",
+    "topic": "",
+    "x": 150,
+    "y": 380,
+    "wires": [
+      [
+        "a5e66a51.64b028"
+      ]
+    ]
+  },
+  {
+    "id": "3e259c00.953d24",
+    "type": "revpi-single-input",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "inputpin": "I_2",
+    "topic": "",
+    "x": 150,
+    "y": 500,
+    "wires": [
+      [
+        "a6dee41d.5db738"
+      ]
+    ]
+  },
+  {
+    "id": "f7ddcfc9.40fef",
+    "type": "websocket out",
+    "z": "8127fa49.f85188",
+    "name": "",
+    "server": "",
+    "client": "cab5bc65.6fe8a",
+    "x": 850,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "66e984e4.ec71fc",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "left_sensor_on",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "left_sensor_on",
+        "tot": "str"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 540,
+    "y": 360,
+    "wires": [
+      [
+        "f7ddcfc9.40fef",
+        "824bfeb7.c30dc"
+      ]
+    ]
+  },
+  {
+    "id": "4d5a4195.7f0c8",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "right_sensor_on",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "right_sensor_on",
+        "tot": "str"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 540,
+    "y": 480,
+    "wires": [
+      [
+        "f7ddcfc9.40fef",
+        "824bfeb7.c30dc"
+      ]
+    ]
+  },
+  {
+    "id": "bb5b5d9d.70451",
+    "type": "websocket in",
+    "z": "8127fa49.f85188",
+    "name": "",
+    "server": "",
+    "client": "cab5bc65.6fe8a",
+    "x": 170,
+    "y": 220,
+    "wires": [
+      [
+        "e82585e3.a12e38",
+        "57c30ff9.6e5d3"
+      ]
+    ]
+  },
+  {
+    "id": "e82585e3.a12e38",
+    "type": "switch",
+    "z": "8127fa49.f85188",
+    "name": "check_r1_msg",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "move_right",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "move_left",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "stop",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 3,
+    "x": 440,
+    "y": 220,
+    "wires": [
+      [
+        "3fe6f65b.234a4a",
+        "bdaea717.0dff98"
+      ],
+      [
+        "40326759.a76868",
+        "60acad0.f8cb554"
+      ],
+      [
+        "fc1d047d.d5e868",
+        "eace37c8.49f6b8"
+      ]
+    ]
+  },
+  {
+    "id": "57c30ff9.6e5d3",
+    "type": "debug",
+    "z": "8127fa49.f85188",
+    "name": "real1_msg",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "x": 390,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "46d37cfa.4c31a4",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_2",
+    "overwritevalue": false,
+    "outputvalue": "",
+    "x": 880,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "824bfeb7.c30dc",
+    "type": "debug",
+    "z": "8127fa49.f85188",
+    "name": "real1",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "x": 830,
+    "y": 540,
+    "wires": []
+  },
+  {
+    "id": "a5e66a51.64b028",
+    "type": "switch",
+    "z": "8127fa49.f85188",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "0",
+        "vt": "num"
+      },
+      {
+        "t": "eq",
+        "v": "1",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 330,
+    "y": 380,
+    "wires": [
+      [
+        "66e984e4.ec71fc"
+      ],
+      [
+        "a614098b.364738"
+      ]
+    ]
+  },
+  {
+    "id": "a6dee41d.5db738",
+    "type": "switch",
+    "z": "8127fa49.f85188",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "0",
+        "vt": "num"
+      },
+      {
+        "t": "eq",
+        "v": "1",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 330,
+    "y": 500,
+    "wires": [
+      [
+        "4d5a4195.7f0c8"
+      ],
+      [
+        "3bb51391.1b814c"
+      ]
+    ]
+  },
+  {
+    "id": "bdaea717.0dff98",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "set_to_0",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "0",
+        "tot": "num"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 660,
+    "y": 80,
+    "wires": [
+      [
+        "46d37cfa.4c31a4"
+      ]
+    ]
+  },
+  {
+    "id": "3fe6f65b.234a4a",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "set_to_1",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "1",
+        "tot": "num"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 660,
+    "y": 40,
+    "wires": [
+      [
+        "8f2153ad.6e7ac"
+      ]
+    ]
+  },
+  {
+    "id": "8bbe87c5.845998",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_1",
+    "overwritevalue": false,
+    "outputvalue": "",
+    "x": 880,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "ea4b16d9.0d1a48",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_2",
+    "overwritevalue": false,
+    "outputvalue": "",
+    "x": 880,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "60acad0.f8cb554",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "set_to_1",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "1",
+        "tot": "num"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 660,
+    "y": 200,
+    "wires": [
+      [
+        "ea4b16d9.0d1a48"
+      ]
+    ]
+  },
+  {
+    "id": "40326759.a76868",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "set_to_0",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "0",
+        "tot": "num"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 660,
+    "y": 160,
+    "wires": [
+      [
+        "8bbe87c5.845998"
+      ]
+    ]
+  },
+  {
+    "id": "26ee029a.9cb61e",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_1",
+    "overwritevalue": false,
+    "outputvalue": "",
+    "x": 880,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "283a504a.ab728",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_2",
+    "overwritevalue": false,
+    "outputvalue": "",
+    "x": 880,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "eace37c8.49f6b8",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "set_to_0",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "0",
+        "tot": "num"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 660,
+    "y": 320,
+    "wires": [
+      [
+        "283a504a.ab728"
+      ]
+    ]
+  },
+  {
+    "id": "fc1d047d.d5e868",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "set_to_0",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "0",
+        "tot": "num"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 660,
+    "y": 280,
+    "wires": [
+      [
+        "26ee029a.9cb61e"
+      ]
+    ]
+  },
+  {
+    "id": "49516207.4eaffc",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_1",
+    "overwritevalue": true,
+    "outputvalue": "0",
+    "x": 1080,
+    "y": 560,
+    "wires": []
+  },
+  {
+    "id": "f7e3740c.d97338",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_2",
+    "overwritevalue": true,
+    "outputvalue": "0",
+    "x": 1080,
+    "y": 640,
+    "wires": []
+  },
+  {
+    "id": "2fb7cfc6.929b6",
+    "type": "inject",
+    "z": "8127fa49.f85188",
+    "name": "stop_manually",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 890,
+    "y": 600,
+    "wires": [
+      [
+        "49516207.4eaffc",
+        "f7e3740c.d97338",
+        "e3dea5a3.3e5e58",
+        "f7ef8c15.fce7b"
+      ]
+    ]
+  },
+  {
+    "id": "a614098b.364738",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "left_sensor_off",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "left_sensor_off",
+        "tot": "str"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 540,
+    "y": 420,
+    "wires": [
+      [
+        "f7ddcfc9.40fef",
+        "824bfeb7.c30dc"
+      ]
+    ]
+  },
+  {
+    "id": "3bb51391.1b814c",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "right_sensor_off",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "right_sensor_off",
+        "tot": "str"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 540,
+    "y": 540,
+    "wires": [
+      [
+        "f7ddcfc9.40fef",
+        "824bfeb7.c30dc"
+      ]
+    ]
+  },
+  {
+    "id": "e0aa0703.51e178",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_3",
+    "overwritevalue": false,
+    "outputvalue": "",
+    "x": 880,
+    "y": 720,
+    "wires": []
+  },
+  {
+    "id": "5ea05e6e.e470c",
+    "type": "revpi-single-input",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "inputpin": "I_3",
+    "topic": "",
+    "x": 150,
+    "y": 1080,
+    "wires": [
+      [
+        "69e05075.dca67"
+      ]
+    ]
+  },
+  {
+    "id": "37f31f14.ba3fb",
+    "type": "revpi-single-input",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "inputpin": "I_4",
+    "topic": "",
+    "x": 150,
+    "y": 1200,
+    "wires": [
+      [
+        "d7c29d98.5699e"
+      ]
+    ]
+  },
+  {
+    "id": "b6cbf1bf.7a3cd",
+    "type": "websocket out",
+    "z": "8127fa49.f85188",
+    "name": "",
+    "server": "",
+    "client": "1a68a9e6.b8ba46",
+    "x": 850,
+    "y": 1160,
+    "wires": []
+  },
+  {
+    "id": "b5f68a69.e65258",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "left_sensor_on",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "left_sensor_on",
+        "tot": "str"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 540,
+    "y": 1060,
+    "wires": [
+      [
+        "b6cbf1bf.7a3cd",
+        "7235ee60.88ed6"
+      ]
+    ]
+  },
+  {
+    "id": "33961262.2339ee",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "right_sensor_on",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "right_sensor_on",
+        "tot": "str"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 540,
+    "y": 1180,
+    "wires": [
+      [
+        "b6cbf1bf.7a3cd",
+        "7235ee60.88ed6"
+      ]
+    ]
+  },
+  {
+    "id": "8a44d818.bdc178",
+    "type": "websocket in",
+    "z": "8127fa49.f85188",
+    "name": "",
+    "server": "",
+    "client": "1a68a9e6.b8ba46",
+    "x": 170,
+    "y": 920,
+    "wires": [
+      [
+        "adbb8a29.247da8",
+        "26d39603.32dc2a"
+      ]
+    ]
+  },
+  {
+    "id": "adbb8a29.247da8",
+    "type": "switch",
+    "z": "8127fa49.f85188",
+    "name": "check_r2_msg",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "move_right",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "move_left",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "stop",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 3,
+    "x": 440,
+    "y": 920,
+    "wires": [
+      [
+        "4afce46b.ccb3ac",
+        "a8b59e2d.85642"
+      ],
+      [
+        "8eec1078.cf6be",
+        "3eb645f8.a5882a"
+      ],
+      [
+        "7bdec740.d1e9d8",
+        "e7659bd9.263aa8"
+      ]
+    ]
+  },
+  {
+    "id": "26d39603.32dc2a",
+    "type": "debug",
+    "z": "8127fa49.f85188",
+    "name": "real2_msg",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "x": 390,
+    "y": 760,
+    "wires": []
+  },
+  {
+    "id": "7cbe85f0.30fa6c",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_4",
+    "overwritevalue": false,
+    "outputvalue": "",
+    "x": 880,
+    "y": 780,
+    "wires": []
+  },
+  {
+    "id": "7235ee60.88ed6",
+    "type": "debug",
+    "z": "8127fa49.f85188",
+    "name": "real2",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "x": 830,
+    "y": 1240,
+    "wires": []
+  },
+  {
+    "id": "69e05075.dca67",
+    "type": "switch",
+    "z": "8127fa49.f85188",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "0",
+        "vt": "num"
+      },
+      {
+        "t": "eq",
+        "v": "1",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 330,
+    "y": 1080,
+    "wires": [
+      [
+        "b5f68a69.e65258"
+      ],
+      [
+        "a7f3fbf7.749148"
+      ]
+    ]
+  },
+  {
+    "id": "d7c29d98.5699e",
+    "type": "switch",
+    "z": "8127fa49.f85188",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "0",
+        "vt": "num"
+      },
+      {
+        "t": "eq",
+        "v": "1",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 330,
+    "y": 1200,
+    "wires": [
+      [
+        "33961262.2339ee"
+      ],
+      [
+        "883a59fe.e39198"
+      ]
+    ]
+  },
+  {
+    "id": "a8b59e2d.85642",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "set_to_0",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "0",
+        "tot": "num"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 660,
+    "y": 780,
+    "wires": [
+      [
+        "7cbe85f0.30fa6c"
+      ]
+    ]
+  },
+  {
+    "id": "4afce46b.ccb3ac",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "set_to_1",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "1",
+        "tot": "num"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 660,
+    "y": 740,
+    "wires": [
+      [
+        "e0aa0703.51e178"
+      ]
+    ]
+  },
+  {
+    "id": "49311f57.a6f72",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_3",
+    "overwritevalue": false,
+    "outputvalue": "",
+    "x": 880,
+    "y": 840,
+    "wires": []
+  },
+  {
+    "id": "8c75271f.e54678",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_4",
+    "overwritevalue": false,
+    "outputvalue": "",
+    "x": 880,
+    "y": 900,
+    "wires": []
+  },
+  {
+    "id": "3eb645f8.a5882a",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "set_to_1",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "1",
+        "tot": "num"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 660,
+    "y": 900,
+    "wires": [
+      [
+        "8c75271f.e54678"
+      ]
+    ]
+  },
+  {
+    "id": "8eec1078.cf6be",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "set_to_0",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "0",
+        "tot": "num"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 660,
+    "y": 860,
+    "wires": [
+      [
+        "49311f57.a6f72"
+      ]
+    ]
+  },
+  {
+    "id": "377e9b0f.11ae74",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_3",
+    "overwritevalue": false,
+    "outputvalue": "",
+    "x": 880,
+    "y": 960,
+    "wires": []
+  },
+  {
+    "id": "3c9dd50a.e1679a",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_4",
+    "overwritevalue": false,
+    "outputvalue": "",
+    "x": 880,
+    "y": 1020,
+    "wires": []
+  },
+  {
+    "id": "e7659bd9.263aa8",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "set_to_0",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "0",
+        "tot": "num"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 660,
+    "y": 1020,
+    "wires": [
+      [
+        "3c9dd50a.e1679a"
+      ]
+    ]
+  },
+  {
+    "id": "7bdec740.d1e9d8",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "set_to_0",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "0",
+        "tot": "num"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 660,
+    "y": 980,
+    "wires": [
+      [
+        "377e9b0f.11ae74"
+      ]
+    ]
+  },
+  {
+    "id": "a7f3fbf7.749148",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "left_sensor_off",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "left_sensor_off",
+        "tot": "str"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 540,
+    "y": 1120,
+    "wires": [
+      [
+        "b6cbf1bf.7a3cd",
+        "7235ee60.88ed6"
+      ]
+    ]
+  },
+  {
+    "id": "883a59fe.e39198",
+    "type": "change",
+    "z": "8127fa49.f85188",
+    "name": "right_sensor_off",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "right_sensor_off",
+        "tot": "str"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 540,
+    "y": 1240,
+    "wires": [
+      [
+        "b6cbf1bf.7a3cd",
+        "7235ee60.88ed6"
+      ]
+    ]
+  },
+  {
+    "id": "f7ef8c15.fce7b",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_4",
+    "overwritevalue": true,
+    "outputvalue": "0",
+    "x": 1080,
+    "y": 800,
+    "wires": []
+  },
+  {
+    "id": "e3dea5a3.3e5e58",
+    "type": "revpi-output",
+    "z": "8127fa49.f85188",
+    "server": "881e060a.9b5288",
+    "outputpin": "O_3",
+    "overwritevalue": true,
+    "outputvalue": "0",
+    "x": 1080,
+    "y": 720,
+    "wires": []
+  }
+]
